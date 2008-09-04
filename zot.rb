@@ -1,9 +1,10 @@
-Shoes.app(:height => 680, :width => 680) do
+s = 12
+
+Shoes.app(:height => s * 20 + 40, :width => s * 20 + 40) do
   a = cornflowerblue
   b = pink
   alleles = [:a, :b, :o]
   people = []
-  
   background(gradient(a, b))
   
   def zot(x, y, col)
@@ -26,11 +27,11 @@ Shoes.app(:height => 680, :width => 680) do
     end
   end
   
-  (0 .. 1023).each { |i| people[i] = genes(alleles) }
+  (0 .. (s * s - 1)).each { |i| people[i] = genes(alleles) }
   
-  def gen(arr)
+  def gen(arr, s)
     arr.each_index do |i|
-      n = arr[rand(1024)]
+      n = arr[rand(s * s)]
       arr[i] = [arr[i][rand(2)], n[rand(2)]]
       arr
     end
@@ -41,10 +42,10 @@ Shoes.app(:height => 680, :width => 680) do
     clear
     k = 0
     a, b = b, a
-    people = gen(people)
+    people = gen(people, s)
     background(gradient(a, b))
-    (20 .. 640).step 20 do |i|
-      (20 .. 640).step 20 do |j|
+    (20 .. 20 * s).step 20 do |i|
+      (20 .. 20 * s).step 20 do |j|
         zot(i, j, selcol(people[k]))
         k += 1
       end
