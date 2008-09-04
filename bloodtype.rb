@@ -32,7 +32,7 @@
 # reasons, i recommend that s be an integer between 16 and 32. my original setting is 32, giving 1024
 # individuals to follow.
 
-s = 16
+s = 32
 
 Shoes.app(:height => s * 20 + 80, :width => s * 20 + 40) do
   a = cornflowerblue
