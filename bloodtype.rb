@@ -50,7 +50,7 @@ Shoes.app(:height => s * 20 + 80, :width => s * 20 + 40) do
   def genes(n)
     [n[rand(3)], n[rand(3)]]
   end
-  
+=begin  
   def selcol(gn)
     if gn[0] == :a
       gn[1] != :b ? red : purple
@@ -60,6 +60,18 @@ Shoes.app(:height => s * 20 + 80, :width => s * 20 + 40) do
       end
     end
   end
+=end
+  selcol = {
+    [:a, :a] => red,
+    [:a, :b] => purple,
+    [:a, :o] => red,
+    [:b, :a] => purple,
+    [:b, :b] => blue,
+    [:b, :o] => blue,
+    [:o, :a] => red,
+    [:o, :b] => blue,
+    [:o, :o] => yellow
+  }
   
   (0 .. (s * s - 1)).each { |i| people[i] = genes(alleles) }
   
@@ -80,7 +92,7 @@ Shoes.app(:height => s * 20 + 80, :width => s * 20 + 40) do
     background(gradient(a, b))
     (20 .. 20 * s).step 20 do |i|
       (20 .. 20 * s).step 20 do |j|
-        zot(i, j, selcol(people[k]))
+        zot(i, j, selcol[people[k]])
         k += 1
       end
     end
