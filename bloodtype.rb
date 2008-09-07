@@ -50,17 +50,7 @@ Shoes.app(:height => s * 20 + 80, :width => s * 20 + 40) do
   def genes(n)
     [n[rand(3)], n[rand(3)]]
   end
-=begin  
-  def selcol(gn)
-    if gn[0] == :a
-      gn[1] != :b ? red : purple
-    else if gn[0] == :b
-      gn[1] != :a ? blue : purple
-      else gn[1] == :o ? yellow : (gn[1] == :a ? red : blue)
-      end
-    end
-  end
-=end
+
   selcol = {
     [:a, :a] => red,
     [:a, :b] => purple,
@@ -84,7 +74,7 @@ Shoes.app(:height => s * 20 + 80, :width => s * 20 + 40) do
     arr
   end
   
-  click do
+  every(1) do
     clear
     k = 0
     a, b = b, a
