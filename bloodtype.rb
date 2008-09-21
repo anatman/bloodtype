@@ -41,7 +41,7 @@ Shoes.app(:height => s * 20 + 80, :width => s * 20 + 40) do
   people = []
   gens = 0
   
-  background(gradient(a, b, :angle => 135))
+  background(gradient(a, b, :angle => 45))
   
   def zot(x, y, col)
     nostroke
@@ -81,7 +81,7 @@ Shoes.app(:height => s * 20 + 80, :width => s * 20 + 40) do
     k = 0
     a, b = b, a
     people = gen(people, s)
-    background(gradient(a, b, :angle => 135))
+    background(gradient(a, b, :angle => 45))
     (20 .. 20 * s).step 20 do |i|
       (20 .. 20 * s).step 20 do |j|
         zot(i, j, selcol[people[k]])
