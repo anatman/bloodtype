@@ -39,7 +39,9 @@ Shoes.app(:height => s * 20 + 80, :width => s * 20 + 40) do
   b = pink
   alleles = [:a, :b, :o]
   people = []
-  background(gradient(a, b))
+  gens = 0
+  
+  background(gradient(a, b, :angle => 135))
   
   def zot(x, y, col)
     nostroke
@@ -79,7 +81,7 @@ Shoes.app(:height => s * 20 + 80, :width => s * 20 + 40) do
     k = 0
     a, b = b, a
     people = gen(people, s)
-    background(gradient(a, b))
+    background(gradient(a, b, :angle => 135))
     (20 .. 20 * s).step 20 do |i|
       (20 .. 20 * s).step 20 do |j|
         zot(i, j, selcol[people[k]])
@@ -91,9 +93,11 @@ Shoes.app(:height => s * 20 + 80, :width => s * 20 + 40) do
     tpa = tp[0].size
     tpb = tp2[0].size
     tpo = tp2[1].size
+    gens += 1
     para("type a: #{tpa}", :top => s * 20 + 20, :left => 20, :stroke => red)
     para("type b: #{tpb}", :top => s * 20 + 20, :left => s * 5 + 20, :stroke => blue)
     para("type o: #{tpo}", :top => s * 20 + 20, :left => s * 10 + 20, :stroke => yellow)
+    para("generations: #{gens}", :top => s * 20 + 20, :left => s * 15 + 20, :stroke => black)
     button("quit", :top => s * 20 + 50, :left => s * 7 + 20) { exit }
   end
 end
